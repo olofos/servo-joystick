@@ -1,0 +1,291 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:olof
+LIBS:servo-joystick-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 10
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCP6002 U1
+U 1 1 59BFED98
+P 2700 4200
+F 0 "U1" H 2700 4350 50  0000 L CNN
+F 1 "MCP6002" H 2700 4050 50  0000 L CNN
+F 2 "olof:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 2600 4250 50  0001 C CNN
+F 3 "" H 2700 4350 50  0000 C CNN
+F 4 "651490" H 2700 4200 60  0001 C CNN "Part"
+	1    2700 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCP6002 U1
+U 2 1 59BFEDBD
+P 5100 4100
+F 0 "U1" H 5100 4250 50  0000 L CNN
+F 1 "MCP6002" H 5100 3950 50  0000 L CNN
+F 2 "olof:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 5000 4150 50  0001 C CNN
+F 3 "" H 5100 4250 50  0000 C CNN
+	2    5100 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 59BFEE44
+P 2650 3400
+F 0 "R4" V 2730 3400 50  0000 C CNN
+F 1 "3k" V 2650 3400 50  0000 C CNN
+F 2 "olof:R_0805_HandSoldering" V 2580 3400 50  0001 C CNN
+F 3 "" H 2650 3400 50  0000 C CNN
+F 4 "1208682" V 2650 3400 60  0001 C CNN "Part"
+	1    2650 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L R R3
+U 1 1 59BFEF7F
+P 2650 3100
+F 0 "R3" V 2730 3100 50  0000 C CNN
+F 1 "1k2" V 2650 3100 50  0000 C CNN
+F 2 "olof:R_0805_HandSoldering" V 2580 3100 50  0001 C CNN
+F 3 "" H 2650 3100 50  0000 C CNN
+F 4 "1208673" V 2650 3100 60  0001 C CNN "Part"
+	1    2650 3100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2500 3400 2200 3400
+Wire Wire Line
+	2200 3100 2200 4100
+Wire Wire Line
+	2200 4100 2400 4100
+Wire Wire Line
+	2500 3100 2200 3100
+Connection ~ 2200 3400
+Wire Wire Line
+	3350 4200 3350 3400
+Wire Wire Line
+	3350 3400 2800 3400
+Connection ~ 3350 4200
+$Comp
+L R R5
+U 1 1 59BFF04F
+P 3850 4200
+F 0 "R5" V 3930 4200 50  0000 C CNN
+F 1 "150k" V 3850 4200 50  0000 C CNN
+F 2 "olof:R_0805_HandSoldering" V 3780 4200 50  0001 C CNN
+F 3 "" H 3850 4200 50  0000 C CNN
+F 4 "1208723" V 3850 4200 60  0001 C CNN "Part"
+	1    3850 4200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3000 4200 3700 4200
+Wire Wire Line
+	4000 4200 4800 4200
+$Comp
+L VCC #PWR034
+U 1 1 59BFF24B
+P 2600 3850
+F 0 "#PWR034" H 2600 3700 50  0001 C CNN
+F 1 "VCC" H 2600 4000 50  0000 C CNN
+F 2 "" H 2600 3850 50  0000 C CNN
+F 3 "" H 2600 3850 50  0000 C CNN
+	1    2600 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 3850 2600 3900
+$Comp
+L VCC #PWR035
+U 1 1 59BFF27E
+P 5000 3750
+F 0 "#PWR035" H 5000 3600 50  0001 C CNN
+F 1 "VCC" H 5000 3900 50  0000 C CNN
+F 2 "" H 5000 3750 50  0000 C CNN
+F 3 "" H 5000 3750 50  0000 C CNN
+	1    5000 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 3750 5000 3800
+$Comp
+L GND #PWR036
+U 1 1 59BFF2A8
+P 2600 4550
+F 0 "#PWR036" H 2600 4300 50  0001 C CNN
+F 1 "GND" H 2600 4400 50  0000 C CNN
+F 2 "" H 2600 4550 50  0000 C CNN
+F 3 "" H 2600 4550 50  0000 C CNN
+	1    2600 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 4500 2600 4550
+$Comp
+L GND #PWR037
+U 1 1 59BFF2ED
+P 5000 4450
+F 0 "#PWR037" H 5000 4200 50  0001 C CNN
+F 1 "GND" H 5000 4300 50  0000 C CNN
+F 2 "" H 5000 4450 50  0000 C CNN
+F 3 "" H 5000 4450 50  0000 C CNN
+	1    5000 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 4400 5000 4450
+$Comp
+L C C8
+U 1 1 59BFF320
+P 5000 3400
+F 0 "C8" H 5025 3500 50  0000 L CNN
+F 1 "100n" H 5025 3300 50  0000 L CNN
+F 2 "olof:C_0805_HandSoldering" H 5038 3250 50  0001 C CNN
+F 3 "" H 5000 3400 50  0000 C CNN
+	1    5000 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 3400 4850 3400
+Wire Wire Line
+	4150 3400 4150 4200
+Connection ~ 4150 4200
+Wire Wire Line
+	5150 3400 5650 3400
+Wire Wire Line
+	5650 3100 5650 4100
+Wire Wire Line
+	5400 4100 6250 4100
+Wire Wire Line
+	2800 3100 5650 3100
+Connection ~ 5650 3400
+Wire Wire Line
+	2400 4300 2200 4300
+Wire Wire Line
+	4800 4000 4600 4000
+Text Label 4600 4000 0    60   ~ 0
+VREF
+Text Label 2200 4300 0    60   ~ 0
+VREF
+Text Label 8950 4100 0    60   ~ 0
+VREF
+$Comp
+L R R6
+U 1 1 59BFF5EE
+P 8700 3900
+F 0 "R6" V 8780 3900 50  0000 C CNN
+F 1 "1k2" V 8700 3900 50  0000 C CNN
+F 2 "olof:R_0805_HandSoldering" V 8630 3900 50  0001 C CNN
+F 3 "" H 8700 3900 50  0000 C CNN
+	1    8700 3900
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R7
+U 1 1 59BFF77D
+P 8700 4300
+F 0 "R7" V 8780 4300 50  0000 C CNN
+F 1 "1k2" V 8700 4300 50  0000 C CNN
+F 2 "olof:R_0805_HandSoldering" V 8630 4300 50  0001 C CNN
+F 3 "" H 8700 4300 50  0000 C CNN
+	1    8700 4300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8700 4050 8700 4150
+Wire Wire Line
+	8350 4100 9200 4100
+Connection ~ 8700 4100
+$Comp
+L GND #PWR038
+U 1 1 59BFF840
+P 8700 4600
+F 0 "#PWR038" H 8700 4350 50  0001 C CNN
+F 1 "GND" H 8700 4450 50  0000 C CNN
+F 2 "" H 8700 4600 50  0000 C CNN
+F 3 "" H 8700 4600 50  0000 C CNN
+	1    8700 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR039
+U 1 1 59BFF958
+P 8700 3650
+F 0 "#PWR039" H 8700 3500 50  0001 C CNN
+F 1 "VCC" H 8700 3800 50  0000 C CNN
+F 2 "" H 8700 3650 50  0000 C CNN
+F 3 "" H 8700 3650 50  0000 C CNN
+	1    8700 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8700 3650 8700 3750
+Wire Wire Line
+	8700 4450 8700 4600
+$Comp
+L C C9
+U 1 1 59BFFF6F
+P 8350 4350
+F 0 "C9" H 8375 4450 50  0000 L CNN
+F 1 "1u" H 8375 4250 50  0000 L CNN
+F 2 "olof:C_0805_HandSoldering" H 8388 4200 50  0001 C CNN
+F 3 "" H 8350 4350 50  0000 C CNN
+	1    8350 4350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 4500 8350 4550
+Connection ~ 5650 4100
+Text HLabel 6250 4100 2    60   Output ~ 0
+SAWTOOTH
+Wire Wire Line
+	8350 4100 8350 4200
+Wire Wire Line
+	8350 4550 8700 4550
+Connection ~ 8700 4550
+Text Label 3350 4000 1    40   ~ 0
+COMP_OUT
+Text Label 4300 4200 0    40   ~ 0
+INT_IN
+Text Label 2200 3950 1    40   ~ 0
+COMP_FB
+$EndSCHEMATC
