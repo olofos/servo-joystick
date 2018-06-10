@@ -68,11 +68,11 @@ This leads to the period and frequency
 %
     (0,0) node [op amp] (buffer) {}
     (buffer.-) to (-1.5,+0.5) to (-1.5,+2.5) to [short,*-] (-2.5,+2.5) to[R,l_=$R_{12}$,-*] (-4.5,+2.5) to[vR,l_=$R_8$] (-6.5,+2.5) to[short,-o] (-7,+2.5) node [anchor=east] {$V_{\text{int}}$}
-    (-4.5,+2.5) to[R,l=$R_9$] (-4.5,0.5) node [ground] {}
+    (-4.5,+2.5) to[vR,l=$R_9$] (-4.5,0.5) node [ground] {}
     (-1.5,+0.5) to (-1.5,+2.5) to[R,l=$R_{13}$] (+1.5,+2.5) to [short,-*] (+1.5,0) to (buffer.out)
 %
     (buffer.+) to (-1.5,-0.5) to (-1.5,-1.5) to (-2.5,-1.5) to[vR,l=$R_{10}$,*-] (-2.5,0.5) node[vcc] {}
-    (-2.5,-1.5) to[R,l_=$R_{11}$] (-2.5,-3) node[ground] {}
+    (-2.5,-1.5) to[vR,l_=$R_{11}$] (-2.5,-3) node[ground] {}
     %
     (5,+0.5) node [op amp,yscale=-1] (comp) {}
     (1.5,0) to (comp.-)
@@ -89,10 +89,10 @@ This leads to the period and frequency
 \begin{center}
   \begin{tabular}{ll}
     \toprule
-    $R_8$ & \SIrange{24}{34}{\kilo\ohm} \\
-    $R_9$ & \SI{470}{\ohm} \\
-    $R_{10}$ & \SIrange{43}{53}{\kilo\ohm} \\
-    $R_{11}$ & \SI{24}{\kilo\ohm} \\
+    $R_8$ & $\SI{30}{\kilo\ohm} + \SI{100}{\ohm} \, x$ \\
+    $R_9$ & $\SI{470}{\ohm} + \SI{100}{\ohm} \, (1-x)$ \\
+    $R_{10}$ & $\SI{30}{\kilo\ohm} + \SI{1}{\kilo\ohm} \, y$ \\
+    $R_{11}$ & $\SI{15}{\kilo\ohm} + \SI{1}{\kilo\ohm} \, (1-y)$\\
     $R_{12}$ & \SI{150}{\kilo\ohm} \\
     $R_{13}$ & \SI{150}{\kilo\ohm} \\
     $R_{14}$ & \SI{470}{\ohm} \\
@@ -102,18 +102,14 @@ This leads to the period and frequency
 \end{center}
 With $R_{12} = R_{13}$ the output of the first op amp sits at
 \begin{equation}
-  V_{\text{set}} = 2V_{\text{off}} - V_{\text{div}} .
+  V_{\text{set}} = 2V_{\text{off}} - V_{\text{div}} , \qquad
+  V_{\text{off}} = \frac{R_{11}}{R_{10} + R_{11}} V_{\text{CC}}.
 \end{equation}
 Since $R_{12}, R_{13} \gg R_8, R_9$
 \begin{equation}
   V_{\text{div}} \approx \frac{R_9}{R_8+R_9} V_{\text{int}} .
 \end{equation}
-For an input voltage of $+\SI{5}{\volt}$ we than have
-\begin{equation}
-  \SI{68}{\milli\volt} \le V_{\text{div}} \le \SI{96}{\milli\volt}
-\end{equation}
-
-
+To find the desired values, we refer to the plot below.
 \begin{center}
   \begin{tikzpicture}
     \newcommand*{\ShowIntersection}[1]{
@@ -150,36 +146,57 @@ For an input voltage of $+\SI{5}{\volt}$ we than have
         % 96 1.5
       };
 
-      \addplot[thick,name path global=hi] table {
+      \addplot[name path global=top] table {
         t V
-        0 3.4
-        72 3.4
+        0 3.5
+        72 3.5
       };
 
-      \addplot[thick,name path global=lo] table {
+      \addplot[name path global=set] table {
         t V
         0 3.2
         72 3.2
       };
 
-      \path [name intersections={of=tri and hi, name=i}] (i-3) coordinate (hi-1) (i-4) coordinate (hi-2);
-      \path [name intersections={of=tri and lo, name=i}] (i-3) coordinate (lo-1) (i-4) coordinate (lo-2);
+      \path [name intersections={of=tri and set, name=i}] (i-3) coordinate (set-1) (i-4) coordinate (set-2);
 
-      \draw (hi-1) -- ($(hi-1)+(0,0.5cm)$);
-      \draw (hi-2) -- ($(hi-2)+(0,0.5cm)$);
+      \draw (set-1) -- ($(set-1)-(0,4.19cm)$);
+      \draw (set-2) -- ($(set-2)-(0,4.19cm)$);
 
-      \node at ($(hi-1)!0.5!(hi-2)+(0,0.5cm)$) [anchor=south] {\SI{1.0}{\milli\second}};
+      \node at ($(set-1)!0.5!(set-2)-(0,4.19cm)$) [anchor=north] {$\delta t$};
 
-      \draw (lo-1) -- ($(lo-1)-(0,0.5cm)$);
-      \draw (lo-2) -- ($(lo-2)-(0,0.5cm)$);
-
-      \node at ($(lo-1)!0.5!(lo-2)-(0,0.5cm)$) [anchor=north] {\SI{2.0}{\milli\second}};
-
-      \node at (axis cs:72,3.4) [anchor=west] {$2V_{\text{off}}$};
+      \node at (axis cs:72,3.5) [anchor=west] {$V_{\text{top}}$};
       \node at (axis cs:72,3.2) [anchor=west] {$2V_{\text{off}}-V_{\text{div}}$};
     \end{axis}
   \end{tikzpicture}
 \end{center}
+\begin{equation*}
+  V_{\text{top}} - 2V_{\text{off}} + V_{\text{div}} = \frac{1}{2} \cdot \text{slope} \cdot \delta t
+\end{equation*}
+
+We want
+\begin{center}
+  \begin{tabular}{ll}
+    \toprule
+    $V_{\text{int}}$ & $\delta t$ \\
+    \midrule
+    $\SI{0}{\volt}$ & $\SI{1.0}{\milli\second}$ \\
+    $\SI{5}{\volt}$ & $\SI{2.0}{\milli\second}$ \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+
+\begin{equation*}
+  2 V_{\text{off}} = \SI{3.48}{\volt} - y \, \SI{0.22}{\volt}
+\end{equation*}
+
+
+For an input voltage of $+\SI{5}{\volt}$ we than have
+\begin{equation}
+  \SI{68}{\milli\volt} \le V_{\text{div}} \le \SI{96}{\milli\volt}
+\end{equation}
+
 
 \paragraph{Integrator.}
 
