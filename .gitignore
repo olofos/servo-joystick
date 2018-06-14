@@ -1,0 +1,14 @@
+*.bak
+*~
+*.log
+*.aux
+*.synctex.gz
+*.net
+*.xml
+*.csv
+*.zip
+*.raw
+_autosave*
+doc/auto/
+doc/*.pdf
+gerbers/
